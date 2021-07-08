@@ -1,16 +1,16 @@
 # 1. GitRepository생성.
-* cf) git clone https://github.com/xxxxxx/MyMSA
+* cf) git clone https://github.com/dragon1617/MyMSA
 
 # 2. Pc나 실습서버에 Clone
 ```
-git clone https://github.com/xxxxxx/MyMSA
+git clone https://github.com/dragon1617/MyMSA
 ```
 
 # 3. Docker Image만들기.
 ## Sample docker build  구하기.
 ```
 cd
-git clone https://github.com/nowage/dockers
+git clone https://github.com/dragon1617/dockers
 ```
 
 # 4. MyDocker Image만들기.
@@ -18,24 +18,24 @@ git clone https://github.com/nowage/dockers
 cd
 cp -r dockers/nginx2/ MyMSA/mynginx
 cd MyMSA/mynginx/
-docker build --rm -t xxxxxx/mynginx:0.1 .
+docker build --rm -t zzizz01/mynginx:0.1 .
 docker images |grep myn
 ```
 * MyMSA/mynginx/README.md에 usage 업데이트
 
 # 5. Docker image push
 ```
-docker run -d --name n1 -p 8888:80 nowage/mynginx:0.1
+docker run -d --name n1 -p 8888:80 zzizz01/mynginx:0.1
 curl localhost:8888
 docker rm -f n1
 
 docker login
-docker push xxxxxx/mynginx:0.1
+docker push zzizz01/mynginx:0.1
 ```
 
 # 6. yaml artifact 만들기.
 ```
-kubectl create deploy  --image=nowage/mynginx:0.1 n1
+kubectl create deploy  --image=zzizz01/mynginx:0.1 n1
 kubectl expose deploy n1 --type="NodePort" --port 80
 kubectl get deploy n1 -o yaml > n1_deply.yaml
 kubectl get service n1 -o yaml > n1_xvc.yaml
@@ -58,8 +58,8 @@ scp vm01:/home/ubuntu/n1*.yaml ./
 ```
 git add -A
 git commit -m "initial commit"
-# git config --global user.name "Steve J. South(NamJungGu) "
-# git config --global user.email "nowage@gmail.com"
+# git config --global user.name "dragon1618"
+# git config --global user.email "xxx@gmail.com"
 git commit -m "initial commit"
 git push
 ````
